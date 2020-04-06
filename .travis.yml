@@ -8,3 +8,18 @@ before_install:
 script:
   - docker run -e CI=true tfazal/docker-react npm run test
 
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react-udemycourse"
+  env: "DockerReactUdemycourse-env"
+  bucket_name: "elasticbeanstalk-us-east-1-329180425367"
+  bucket_path: "docker-react-udemycourse"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY  
+
+
+
